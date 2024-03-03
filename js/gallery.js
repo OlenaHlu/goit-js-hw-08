@@ -89,10 +89,9 @@ galleryItems.addEventListener("click", handleGalleryClick);
 
 function handleGalleryClick(event) {
     event.preventDefault();
-    if (event.target === event.currentTarget) return;
+    if (event.target.nodeName !== "IMG") return;
     
-    const currentImage = event.target.closest(".gallery-image");
-    const imageId = currentImage.dataset.source;
+    const imageId = event.target.dataset.source;
 
     const imageCard = images.find(({ original }) => original === imageId);
 
